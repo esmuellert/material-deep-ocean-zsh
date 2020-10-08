@@ -69,7 +69,7 @@ ZSH_THEME="material_deep_ocean"
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git autojump git-open)
+plugins=(git zsh-autosuggestions zsh-syntax-highlighting)
 source $ZSH/oh-my-zsh.sh
 
 # User configuration
@@ -98,27 +98,3 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
-# PROMPT="%{$fg[default]%}%n@%{$fg[default]%}%m%{$reset_color%} ${PROMPT}"
-# zsh plugins
-source /usr/local/share/zsh-autosuggestions/zsh-autosuggestions.zsh
-
-if type brew &>/dev/null; then
-FPATH=$(brew --prefix)/share/zsh-completions:$FPATH
-
-autoload -Uz compinit
-compinit
-fi
-
-source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-
-source /usr/local/share/zsh-history-substring-search/zsh-history-substring-search.zsh
-bindkey '^[[A' history-substring-search-up
-bindkey '^[[B' history-substring-search-down
-
-# proxy
-export https_proxy=http://127.0.0.1:6152;export http_proxy=http://127.0.0.1:6152;export all_proxy=socks5://127.0.0.1:6153
-
-# postgresql
-export PGHOST=localhost
-export PGUSER=postgres
-export PGPASSWORD=980508
