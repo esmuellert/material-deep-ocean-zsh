@@ -66,9 +66,15 @@ wget https://github.com/esmuellert/material-deep-ocean-zsh/raw/main/material_dee
 
 # Set zsh as default shell if it isn't already
 if [ "$SHELL" != "$(which zsh)" ]; then
-    echo "Setting zsh as default shell..."
-    chsh -s "$(which zsh)"
+    echo "Attempting to change default shell to zsh..."
+    if chsh -s "$(which zsh)"; then
+        echo "Successfully changed default shell to zsh"
+    else
+        echo "Failed to change shell automatically. Please run the following command manually:"
+        echo "    sudo chsh -s $(which zsh) $USER"
+        echo "You may be prompted for your password."
+    fi
 fi
 
 echo "Installation completed successfully!"
-echo "Please log out and log back in for the changes to take effect."
+echo "If you had to change your shell manually, please log out and log back in for the changes to take effect."
